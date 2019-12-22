@@ -1,0 +1,1 @@
+export const apiDrinks = "https://api.code-challenge.ze.delivery/public/graphql"

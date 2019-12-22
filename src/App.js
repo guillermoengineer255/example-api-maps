@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from "apollo-boost";
+import { Home } from './components/containers/home/home';
+import {Products} from './components/containers/products/products';
+import { apiDrinks } from './config/services';
+import { Route, Switch } from 'react-router-dom'
 import './App.css';
 
-function App() {
+
+export const App = () => {
+
+  const client = new ApolloClient({
+    uri: apiDrinks
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/products" component={Products}/>
+      </Switch>
+    </ApolloProvider>
+
   );
 }
 
