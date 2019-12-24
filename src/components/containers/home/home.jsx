@@ -93,7 +93,7 @@ export const Home = (props) => {
                                                 style,
                                             })}
                                         >
-                                            <span className="suggestion">{suggestion.description}</span>
+                                            <span className="suggestion" onClick={() =>setAddress(suggestion.description) }>{suggestion.description}</span>
                                         </div>
                                     );
                                 })}
